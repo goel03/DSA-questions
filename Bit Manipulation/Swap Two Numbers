@@ -1,0 +1,8 @@
+void swapNumber(int &a, int &b) {
+	
+	int temp=a^b;
+	b=temp^b;
+	a=a^temp;
+
+	
+}
