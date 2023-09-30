@@ -1,0 +1,12 @@
+bool isPowerOfTwo(int n)
+{	
+   if((n&1)==0)  //even
+   {
+       if((n&(n-1))==0)  //power of 2
+         return true;
+
+         else
+         return false;
+   }
+   return false;
+}
