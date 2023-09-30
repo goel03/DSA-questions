@@ -1,0 +1,53 @@
+/*
+    Time Complexity: O(1)
+    Space Complexity: O(1)
+*/
+
+int divideTwoInteger(int dividend, int divisor) 
+{
+    //  dividend, divisor are negative or positive.
+    
+    bool isDividendNegative = false;
+    if(dividend < 0)
+    {
+        dividend *= -1;
+        isDividendNegative = true;
+    }
+
+    bool isDivisorNegative = false;
+    if(divisor < 0)
+    {
+        divisor *= -1;
+        isDivisorNegative = true;
+    }
+
+    long long b = divisor;
+    long long a = dividend;
+
+    long long quotient = 0;
+
+    for(int i = 30; i >= 0; i--)
+    {
+        if((b<<i) <= a)    // multiply by 2 rightshift means
+        {
+            a -= (b<<i);   // sub
+            quotient |= (1<<i);  
+        }
+    }
+
+    // Both are negative.
+    if(isDividendNegative && isDivisorNegative)
+    {
+        return quotient;
+    }
+
+    // Both are positive.
+    if(!isDividendNegative && !isDivisorNegative)
+    {
+        return quotient;
+    }
+
+    // One is negative and one is positive.
+    return -1*quotient;
+
+}
