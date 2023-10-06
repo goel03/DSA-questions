@@ -1,0 +1,20 @@
+int flipBits(int A, int B){
+  int cnt=0;
+
+    int x=A^B;
+
+    while(x>0){
+
+        if(x&1==1){
+
+            cnt++;
+
+        }
+
+        x=x>>1;
+
+    }
+
+    return cnt;
+   
+}
