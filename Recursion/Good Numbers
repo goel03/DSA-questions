@@ -1,0 +1,31 @@
+
+bool goodWithoutDigit(int n ,int digit)
+{
+
+	if(n%10==digit)
+	return false;
+	int sum =n%10;
+	n=n/10;
+	while(n>0)
+	{
+		if(((n%10) == digit) || ((n%10)<=sum))
+		{
+			return false;
+		}
+		sum =sum + n%10;
+		n=n/10;
+	}
+		return true;
+}
+vector<int> goodNumbers(int a, int b, int digit) {
+	vector<int>ans;
+	for(int i =a;i<=b;i++)
+	{
+		if(goodWithoutDigit(i,digit))
+		{
+ans.push_back(i);
+		}
+	}
+	return ans;
+}
+
