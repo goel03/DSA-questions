@@ -28,7 +28,7 @@ void sortStack(stack<int> &st)
 
     sortStack(st);
 
-    sortedInsertion(st,element)
+    sortedInsertion(st,element);
 }
 
 int main()
@@ -36,6 +36,7 @@ int main()
       int t;
     cin>>t;
     while(t--){
+int n ;
         stack<int>st;
         cin>>n;
         for(int i=1; i<=n; i++){
