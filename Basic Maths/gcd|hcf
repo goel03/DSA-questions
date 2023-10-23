@@ -1,0 +1,35 @@
+int calcGCD(int n, int m){
+//     int gcd=1;
+//    for(int i=1;i<=min(n,m);i++)
+//    {
+//        if((n%i==0)&&(m%i==0))
+//        {
+//            gcd=i;
+//        }
+//        cout<<gcd;
+//    }
+
+
+//min to 1
+//or euclidean algo gcd(a-b,b)
+//or gcd(a%b,b)
+
+while(n>0 && m>0)
+{
+    if(n>m)
+    n=n%m;
+    else
+    m=m%n;
+}
+    if(n==0)
+    {
+    return m;
+    }
+    else
+    {
+    return n;}
+
+
+}
+
+//log fi(min(a,b))
