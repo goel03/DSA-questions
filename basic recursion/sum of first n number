@@ -1,0 +1,20 @@
+int rec(long long n,long long ans)
+{
+    if(n<1)
+    {
+
+    // cout<<ans;
+    return ans ;
+ 
+    }
+
+    
+    rec(n-1,ans+n);
+    // cout<<ans;
+}
+
+long long sumFirstN(long long n) {
+    long long ans=0;
+    rec(n,ans);
+    return rec(n,ans);
+}
