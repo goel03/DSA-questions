@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+
+void rotateMatrix(vector<vector<int>> &mat, int n, int m)
+{     int k = mat.size();
+    //transposing the matrix
+    for (int i = 0; i < k; i++) {
+    for (int j = 0; j < i; j++) {
+        swap(mat[i][j], mat[j][i]);
+    }
+    }
+    //reversing each row of the matrix
+    for (int i = 0; i < k; i++) {
+    reverse(mat[i].begin(), mat[i].end());
+    }
+
+}
