@@ -1,0 +1,55 @@
+ListNode* reverse(ListNode* head)
+{
+    ListNode * temp=head;
+    ListNode* prev=NULL;
+    while(temp!=NULL)
+    {
+        ListNode* front = temp->next;
+        temp->next=prev;
+        prev=temp;
+        temp=front;
+    }
+    return prev;
+
+}
+ ListNode* getk(ListNode* head, int k)
+ {
+     k-=1;
+     while(head!=NULL &&k>0)
+     {
+         k--;
+         head=head->next;
+     }
+     return head;
+ }
+
+    ListNode* reverseKGroup(ListNode* head, int k) {
+        ListNode* temp=head;
+        ListNode* prevlast =NULL;
+        while(temp!=NULL)
+        {
+            ListNode *kthnode =getk(temp,k);
+            if(kthnode==NULL)
+            {
+                if(prevlast)
+                {
+                    prevlast->next=temp;
+                }
+                break;
+            }
+            ListNode* nextnode=kthnode->next;
+            kthnode->next=NULL;
+            reverse(temp);
+            if(temp==head)
+            {
+                head=kthnode;
+            }
+            else
+            {
+                prevlast->next=kthnode;
+            }
+            prevlast=temp;
+            temp=nextnode;
+        }
+        return head;
+    }
