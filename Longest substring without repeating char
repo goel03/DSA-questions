@@ -1,0 +1,25 @@
+#include <bits/stdc++.h> 
+int uniqueSubstrings(string input)
+{
+if(input.size()==0)
+return 0;
+int maxx=INT_MIN;
+unordered_set<int> set;
+int l=0;
+for(int r=0;r<input.size();r++)
+{
+    if(set.find(input[r])!=set.end())
+    {
+        while(l<r && set.find(input[r])!=set.end())
+    {
+        set.erase(input[l]);
+        l++;
+    }
+    }
+    set.insert(input[r]);
+    maxx=max(maxx ,r-l+1);
+}
+return maxx;
+
+ //Write your code here
+}
