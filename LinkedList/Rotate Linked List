@@ -1,0 +1,33 @@
+Node *findnthnode(Node *temp ,int k)
+ {
+      int c=1;
+      while(temp!=NULL)
+      {
+           if(c==k) return temp;
+           c++;
+           temp=temp->next;
+      }
+      return temp;
+ }
+
+Node *rotate(Node *head, int k) {
+ if(head ==NULL ||k==0 )
+ return head;
+
+ int len=1;
+ Node* tail=head;
+ while(tail->next!=NULL)
+ {
+      len++;
+      tail=tail->next;
+ }
+  if(k%len==0) return head;
+
+ k=k%len;
+ tail->next=head;
+ Node* lastnode = findnthnode(head,len-k);
+ head=lastnode->next;
+ lastnode->next=NULL;
+ return head;
+
+}
