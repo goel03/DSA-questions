@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+Node *cloneLL(Node *head){
+ Node* temp=head;
+ unordered_map<Node *,Node *>mp;
+ while(temp!=NULL)
+ {
+	 Node* nn=new Node(temp->data);
+	 mp[temp]=nn;
+	 temp=temp->next;
+ }
+
+ Node* t=head;
+ while(t!=NULL)
+ {
+	 Node* cn=mp[t];
+	 cn->next=mp[t->next];
+	 cn->random=mp[t->random];
+	 t=t->next;
+ }
+ return mp[head];
+}
