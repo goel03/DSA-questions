@@ -1,0 +1,17 @@
+vector<int> MinimumCoins(int n)
+{
+int d[]={1, 2, 5, 10, 20, 50, 100, 500, 1000};
+int k=9;
+vector<int>ans;
+for(int i=k-1;i>=0;i--)
+{
+    while(n>=d[i])
+    {
+        n-=d[i];
+        ans.push_back(d[i]);
+
+    }
+}
+
+return ans;
+}
