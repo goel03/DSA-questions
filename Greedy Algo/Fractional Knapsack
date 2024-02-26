@@ -1,0 +1,28 @@
+#include <bits/stdc++.h> 
+bool comp(pair<int,int>&a,pair<int,int>&b)
+{
+    double r1=(double)a.second/a.first;
+    double r2=(double)b.second/b.first;
+    return r1>r2;
+}
+double maximumValue(vector<pair<int,int>>&items, int n, int w)
+{
+ sort(items.begin(),items.end(),comp);
+ double maxval=0;
+ int curw=0;
+ for(int i=0;i<n;i++)
+ {
+     if(curw+items[i].first<=w)
+     {
+         curw+=items[i].first;
+         maxval+=items[i].second;
+     }
+     else
+     {
+         int rem=w-curw;
+         maxval+=items[i].second*((double)rem / items[i].first);
+         break;
+     }
+ }
+ return maxval;
+}
