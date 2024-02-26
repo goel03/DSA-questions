@@ -1,0 +1,19 @@
+void ss(int ind,vector<int> &arr , int n ,vector<int>&ans ,int sum)
+{
+	if(ind ==n)
+	{
+		ans.push_back(sum);
+		return;
+	}
+	ss(ind+1 ,arr,n,ans,sum+arr[ind]);
+	ss(ind+1 ,arr,n,ans,sum);
+}
+vector<int> subsetSum(vector<int> &num){
+	// Write your code here.	
+
+	int n = num.size();
+	vector<int> ans;
+	ss(0,num,n,ans,0);
+	sort(ans.begin(),ans.end());
+	return ans;
+}
