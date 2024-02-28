@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+bool isPalindrome(string &s, int start, int end){
+    while(start<=end){
+        if(s[start++]!=s[end--]){
+            return false;
+        }
+        // start++;
+        // end--;
+    }
+    return true;
+}
+
+void calcPartition(int index, string s, vector<string> &partition_str, vector<vector<string>> &ans){
+    if(index==s.size()){
+        ans.push_back(partition_str);
+        return;
+    }
+    for(int i=index;i<s.size();i++){
+        if(isPalindrome(s, index, i)){
+            partition_str.push_back(s.substr(index, i-index+1));
+            calcPartition(i+1, s, partition_str, ans);
+            partition_str.pop_back();
+        }
+    }
+}
+
+vector<vector<string>> partition(string s) {
+    // Write your code here.
+    vector<vector<string>> ans;
+    vector<string> partition_str;
+    calcPartition(0, s, partition_str, ans);
+    return ans;
+}
