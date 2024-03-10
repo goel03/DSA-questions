@@ -1,0 +1,110 @@
+#include <bits/stdc++.h> 
+
+int countstudent(vector<int> &arr ,int pages)
+{
+	int n =arr.size();
+	int s=1;
+	long long pagestudent =0;
+	for(int i=0;i<n;i++)
+	{
+		if(pagestudent +arr[i]<=pages)
+		{
+			pagestudent +=arr[i];
+		}
+		else
+		{
+			s++;
+			pagestudent=arr[i];
+		}
+	}
+	return s;
+}
+
+long long ayushGivesNinjatest(int n, int m, vector<int> arr) 
+{	
+	// Write your code here.
+if(m>n) return -1;
+int low=*max_element(arr.begin(),arr.end());
+int high=accumulate(arr.begin(),arr.end(),0);
+while(low<=high)
+{
+	int mid=(low+high)/2;
+	int s=countstudent(arr,mid);
+	if(s>m)
+	{
+		low=mid+1;
+	}
+	else
+	{
+		high=mid-1;
+	}
+
+}
+return low;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <bits/stdc++.h> 
+
+
+long long ayushGivesNinjatest(int n, int m, vector<int> arr) 
+{	
+
+	//m is the size of the arr
+	// Write your code here.
+// if(m>n) return -1;
+int low=*max_element(arr.begin(),arr.end());
+int high=accumulate(arr.begin(),arr.end(),0);
+while(low<=high)
+{
+	int mid=(low+high)/2;
+	int days=1;
+	long long pagestudent =0;   //time
+
+  for (int i = 0; i < m; i++)
+        {
+            pagestudent += arr[i];
+            if (pagestudent > mid)
+            {
+                days++;
+                pagestudent = arr[i];
+            }
+
+        }
+
+
+	
+	if(days>n)
+	{
+		low=mid+1;
+	}
+	else
+	{
+		high=mid-1;
+	}
+
+}
+return low;
+
+}
