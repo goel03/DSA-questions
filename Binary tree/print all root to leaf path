@@ -1,0 +1,20 @@
+void solve(BinaryTreeNode<int>*root ,vector<string> &ans,string output)
+{
+    if(root==NULL)
+    return ;
+    output+=to_string(root->data)+" ";
+    if(!root->left && !root->right)
+    {
+        ans.push_back(output);
+        return;
+    }
+    solve(root->left,ans,output);
+    solve(root->right,ans,output);
+}
+vector <string> allRootToLeaf(BinaryTreeNode<int> * root) {
+    // Write your code here.
+    vector<string> ans;
+    string output ="";
+    solve(root,ans,output);
+    return ans;
+}
