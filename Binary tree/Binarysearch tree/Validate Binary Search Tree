@@ -1,0 +1,18 @@
+ bool is(TreeNode *root, long mn, long mx) {
+        // If the root is NULL, it's a valid BST
+        if (root == nullptr) 
+            return true;
+        
+        // If the current node's value is outside the valid range, it's not a BST
+        if (root->val >= mx || root->val <= mn) 
+            return false;
+        
+        // Recursively check the left and right subtrees with updated ranges
+        return is(root->left, mn, root->val) && is(root->right, root->val, mx);
+    }
+    
+    // Function to check if the given tree is a valid BST
+    bool isValidBST(TreeNode* root) {
+        // Call the recursive function with the initial range of long min and max
+        return is(root, LONG_MIN, LONG_MAX);
+    }
